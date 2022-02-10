@@ -8,6 +8,15 @@ final class Todo
      */
     final public static function get(): void
     {
-        echo "todos";
+        echo "GET todos";
+    }
+
+    /**
+     * @example
+     * Todo::post();
+     */
+    final public static function post(): void
+    {
+        echo "POST todos";
     }
 }

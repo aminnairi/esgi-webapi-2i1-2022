@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 /**
  * @see https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op
  */
@@ -15,39 +18,69 @@ if ($route === "users") {
 
     if ($method === "GET") {
         User::get();
-    } else {
-        echo "Introuvable";
+        die();
     }
-} else if ($route === "posts") {
+
+    if ($method === "POST") {
+        User::post();
+        die();
+    }
+}
+
+if ($route === "posts") {
     include "./controllers/posts.php";
 
     if ($method === "GET") {
         Post::get();
-    } else {
-        echo "Introuvable";
+        die();
     }
-} else if ($route === "comments") {
+
+    if ($method === "POST") {
+        Post::post();
+        die();
+    }
+}
+
+if ($route === "comments") {
     include "./controllers/comments.php";
 
     if ($method === "GET") {
         Comment::get();
+        die();
     }
-} else if ($route === "todos") {
+
+    if ($method === "POST") {
+        Comment::post();
+        die();
+    }
+}
+
+if ($route === "todos") {
     include "./controllers/todos.php";
 
     if ($method === "GET") {
         Todo::get();
-    } else {
-        echo "Introuvable";
+        die();
     }
-} else if ($route === "albums") {
+
+    if ($method === "POST") {
+        Todo::post();
+        die();
+    }
+}
+
+if ($route === "albums") {
     include "./controllers/albums.php";
 
     if ($method === "GET") {
         Album::get();
-    } else {
-        echo "Introuvable";
+        die();
     }
-} else {
-    echo "Introuvable";
+
+    if ($method === "POST") {
+        Album::post();
+        die();
+    }
 }
+
+echo "Introuvable";
