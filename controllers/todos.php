@@ -8,7 +8,17 @@ final class Todo
      */
     final public static function get(): void
     {
-        echo "GET todos";
+        $statusCode = 200;
+
+        $headers = [
+            "Content-Type" => "application/json"
+        ];
+
+        $body = [
+            "success" => true
+        ];
+
+        echo Response::json($statusCode, $headers, $body);
     }
 
     /**
@@ -17,6 +27,16 @@ final class Todo
      */
     final public static function post(): void
     {
-        echo "POST todos";
+        $statusCode = 200;
+
+        $headers = [
+            "Content-Type" => "application/json"
+        ];
+
+        $body = [
+            "success" => true
+        ];
+
+        echo Response::json($statusCode, $headers, $body);
     }
 }

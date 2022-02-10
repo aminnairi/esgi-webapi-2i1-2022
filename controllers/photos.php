@@ -8,6 +8,35 @@ final class Photo
      */
     final public static function get(): void
     {
-        echo "photos.php";
+        $statusCode = 200;
+
+        $headers = [
+            "Content-Type" => "application/json"
+        ];
+
+        $body = [
+            "success" => true
+        ];
+
+        echo Response::json($statusCode, $headers, $body);
+    }
+
+    /**
+     * @example
+     * Photo::post();
+     */
+    final public static function post(): void
+    {
+        $statusCode = 200;
+
+        $headers = [
+            "Content-Type" => "application/json"
+        ];
+
+        $body = [
+            "success" => true
+        ];
+
+        echo Response::json($statusCode, $headers, $body);
     }
 }

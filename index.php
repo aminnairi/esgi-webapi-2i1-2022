@@ -83,4 +83,18 @@ if ($route === "albums") {
     }
 }
 
+if ($route === "photos") {
+    include "./controllers/photos.php";
+
+    if ($method === "GET") {
+        Photo::get();
+        die();
+    }
+
+    if ($method === "POST") {
+        Photo::post();
+        die();
+    }
+}
+
 echo "Introuvable";
