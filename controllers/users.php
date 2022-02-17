@@ -2,6 +2,15 @@
 
 include "./library/response.php";
 
+$driver = "mysql";
+$databaseName = "esgi-webapi-2022-2i1";
+$host = "localhost";
+$dsn = "$driver:dbname=$databaseName;host=$host";
+$user = "root";
+$password = "root";
+
+$databaseConnection = new PDO($dsn, $user, $password);
+
 final class User
 {
     /**
