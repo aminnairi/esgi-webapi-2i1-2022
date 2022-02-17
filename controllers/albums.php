@@ -1,5 +1,8 @@
 <?php
 
+include "./library/response.php";
+include "./models/AlbumModel.php";
+
 final class Album
 {
     /**
@@ -14,11 +17,13 @@ final class Album
             "Content-Type" => "application/json"
         ];
 
-        $body = [
-            "success" => true
-        ];
-
-        echo Response::json($statusCode, $headers, $body);
+        try {
+            $albums = AlbumModel::getAll();
+            $body = ["success" => true, "albums" => $albums];
+            echo Response::json($statusCode, $headers, $body);
+        } catch (PDOException $exception) {
+            die($exception->getMessage());
+        }
     }
 
     /**

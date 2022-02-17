@@ -1,5 +1,8 @@
 <?php
 
+include "./library/response.php";
+include "./models/PhotoModel.php";
+
 final class Photo
 {
     /**
@@ -14,11 +17,13 @@ final class Photo
             "Content-Type" => "application/json"
         ];
 
-        $body = [
-            "success" => true
-        ];
-
-        echo Response::json($statusCode, $headers, $body);
+        try {
+            $photos = PhotoModel::getAll();
+            $body = ["success" => true, "photos" => $photos];
+            echo Response::json($statusCode, $headers, $body);
+        } catch (PDOException $exception) {
+            die($exception->getMessage());
+        }
     }
 
     /**

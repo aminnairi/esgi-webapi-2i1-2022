@@ -1,5 +1,8 @@
 <?php
 
+include "./library/response.php";
+include "./models/TodoModel.php";
+
 final class Todo
 {
     /**
@@ -14,11 +17,13 @@ final class Todo
             "Content-Type" => "application/json"
         ];
 
-        $body = [
-            "success" => true
-        ];
-
-        echo Response::json($statusCode, $headers, $body);
+        try {
+            $todos = TodoModel::getAll();
+            $body = ["success" => true, "todos" => $todos];
+            echo Response::json($statusCode, $headers, $body);
+        } catch (PDOException $exception) {
+            die($exception->getMessage());
+        }
     }
 
     /**
