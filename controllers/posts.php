@@ -1,6 +1,7 @@
 <?php
 
 include "./library/response.php";
+include "./models/PostModel.php";
 
 final class Post
 {
@@ -16,11 +17,13 @@ final class Post
             "Content-Type" => "application/json"
         ];
 
-        $body = [
-            "success" => true
-        ];
-
-        echo Response::json($statusCode, $headers, $body);
+        try {
+            $posts = PostModel::getAll();
+            $body = [ "success" => true, "posts" => $posts ];
+            echo Response::json($statusCode, $headers, $body);
+        } catch (PDOException $exception) {
+            die($exception->getMessage());
+        }
     }
 
     /**
