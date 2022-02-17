@@ -45,3 +45,5 @@ CREATE TABLE todos(
     title VARCHAR(25) NOT NULL,
     completed BOOLEAN DEFAULT FALSE
 ) ENGINE = InnoDB;
+
+INSERT INTO users(name, username, email, phone, website) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://www.esgi.fr');
