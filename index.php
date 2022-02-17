@@ -36,7 +36,7 @@ if ($route === "posts") {
     }
 
     if ($method === "POST") {
-        Post::post();
+        Post::posts();
         die();
     }
 }

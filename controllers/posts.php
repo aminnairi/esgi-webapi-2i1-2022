@@ -1,5 +1,7 @@
 <?php
 
+include "./library/response.php";
+
 final class Post
 {
     /**
@@ -23,9 +25,9 @@ final class Post
 
     /**
      * @example
-     * Post::post();
+     * Post::posts();
      */
-    final public static function post(): void
+    final public static function posts(): void
     {
         $statusCode = 200;
 
