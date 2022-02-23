@@ -10,6 +10,7 @@ CREATE TABLE users(
     phone CHAR(10) NOT NULL,
     website varchar(50) NOT NULL,
     password CHAR(60) NOT NULL,
+    role VARCHAR(20) NOT NULL,
     token CHAR(32)
 ) ENGINE = InnoDB;
 
@@ -48,4 +49,4 @@ CREATE TABLE todos(
     completed BOOLEAN DEFAULT FALSE
 ) ENGINE = InnoDB;
 
-INSERT INTO users(name, username, email, phone, website, password) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://www.esgi.fr', 'motdepasse');
+INSERT INTO users(name, username, email, phone, website, password, role) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://www.esgi.fr', '$2y$10$PrCkHyGRHD7cGaKF8yAsdeV6VjScVsEqHjgLvnndae4pxB2sx2B.u', 'ADMINISTRATOR');

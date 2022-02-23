@@ -27,8 +27,14 @@ final class User
                 die();
             }
 
+            if ($user["role"] !== "ADMINISTRATOR") {
+                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => false, "error" => "Unauthorized"]);
+                die();
+            }
+
             $users = UserModel::getAll();
             $body = ["success" => true, "users" => $users];
+
             echo Response::json($statusCode, $headers, $body);
         } catch (PDOException $exception) {
             die($exception->getMessage());
@@ -59,6 +65,7 @@ final class User
             "email" => $json->email,
             "website" => $json->website,
             "phone" => $json->phone,
+            "role" => "USER",
             "password" => $json->password
         ]);
 
