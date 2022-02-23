@@ -9,3 +9,5 @@
 - [password_hash](https://www.php.net/manual/en/function.password-hash.php)
 - [password_verify](https://www.php.net/manual/en/function.password-verify.php)
 - [php://input](https://www.php.net/manual/en/wrappers.php.php#wrappers.php.input)
+- [random_bytes](https://www.php.net/manual/en/function.random-bytes.php)
+- [bin2hex](https://www.php.net/manual/en/function.bin2hex.php)
