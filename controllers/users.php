@@ -33,6 +33,8 @@ final class User
      */
     final public static function post(): void
     {
+        $json = json_decode(file_get_contents("php://input"));
+
         $statusCode = 200;
 
         $headers = [
@@ -42,6 +44,15 @@ final class User
         $body = [
             "success" => true
         ];
+
+        UserModel::create([
+            "name" => $json->name,
+            "username" => $json->username,
+            "email" => $json->email,
+            "website" => $json->website,
+            "phone" => $json->phone,
+            "password" => $json->password
+        ]);
 
         echo Response::json($statusCode, $headers, $body);
     }

@@ -8,7 +8,8 @@ CREATE TABLE users(
     username VARCHAR(25) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone CHAR(10) NOT NULL,
-    website varchar(50) NOT NULL
+    website varchar(50) NOT NULL,
+    password CHAR(60) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE posts(
@@ -46,4 +47,4 @@ CREATE TABLE todos(
     completed BOOLEAN DEFAULT FALSE
 ) ENGINE = InnoDB;
 
-INSERT INTO users(name, username, email, phone, website) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://www.esgi.fr');
+INSERT INTO users(name, username, email, phone, website, password) VALUES('Amin NAIRI', 'anairi', 'anairi@esgi.fr', '0102030405', 'https://www.esgi.fr', 'motdepasse');
