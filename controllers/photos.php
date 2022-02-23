@@ -18,6 +18,13 @@ final class Photo
         ];
 
         try {
+            $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+            if (!$user) {
+                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+                die();
+            }
+
             $photos = PhotoModel::getAll();
             $body = ["success" => true, "photos" => $photos];
             echo Response::json($statusCode, $headers, $body);
@@ -43,6 +50,13 @@ final class Photo
         $body = [
             "success" => true
         ];
+
+        $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+        if (!$user || $user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+            die();
+        }
 
         PhotoModel::create([
             "albumId" => $json->albumId,

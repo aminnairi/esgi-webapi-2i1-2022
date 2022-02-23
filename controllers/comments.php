@@ -18,6 +18,13 @@ final class Comment
         ];
 
         try {
+            $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+            if (!$user) {
+                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+                die();
+            }
+
             $comments = CommentModel::getAll();
             $body = ["success" => true, "comments" => $comments];
             echo Response::json($statusCode, $headers, $body);
@@ -43,6 +50,13 @@ final class Comment
         $body = [
             "success" => true
         ];
+
+        $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+        if (!$user || $user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+            die();
+        }
 
         CommentModel::create([
             "postId" => $json->postId,

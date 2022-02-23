@@ -18,6 +18,13 @@ final class Post
         ];
 
         try {
+            $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+            if (!$user) {
+                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+                die();
+            }
+
             $posts = PostModel::getAll();
             $body = [ "success" => true, "posts" => $posts ];
             echo Response::json($statusCode, $headers, $body);
@@ -43,6 +50,13 @@ final class Post
         $body = [
             "success" => true
         ];
+
+        $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+        if (!$user || $user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+            die();
+        }
 
         PostModel::create([
             "userId" => $json->userId,

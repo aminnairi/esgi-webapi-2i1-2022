@@ -19,15 +19,9 @@ final class User
         ];
 
         try {
-            $token = Header::get("token", "notfound");
-            $user = UserModel::findOneByToken($token);
+            $user = UserModel::findOneByToken(Header::get("token", "notfound"));
 
             if (!$user) {
-                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => false, "error" => "Unauthorized"]);
-                die();
-            }
-
-            if ($user["role"] !== "ADMINISTRATOR") {
                 echo Response::json(401, ["Content-Type" => "application/json"], ["success" => false, "error" => "Unauthorized"]);
                 die();
             }
@@ -58,6 +52,13 @@ final class User
         $body = [
             "success" => true
         ];
+
+        $user = UserModel::findOneByToken(Header::get("token", "notfound"));
+
+        if (!$user || $user["role"] !== "ADMINISTRATOR") {
+            echo Response::json(401, ["Content-Type" => "application/json"], ["success" => true, "error" => "Unauthorized"]);
+            die();
+        }
 
         UserModel::create([
             "name" => $json->name,
