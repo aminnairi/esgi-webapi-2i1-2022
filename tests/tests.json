@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "69567bd1-f4f9-4572-82c5-22e3f39958cf",
+		"_postman_id": "dc8cd083-6640-4381-8e32-5b6d69c6996e",
 		"name": "esgi-webapi-2022-2i1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,13 +25,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/webapi/users",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"users"
 							]
 						}
@@ -43,14 +43,23 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"anairi@esgi.fr\",\n    \"name\": \"Quentin HERMITEAU\",\n    \"username\": \"qhermiteau\",\n    \"website\": \"https://github.com/quentinhermiteau\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/webapi/users",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"users"
 							]
 						}
@@ -68,13 +77,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/webapi/posts",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"posts"
 							]
 						}
@@ -86,58 +95,24 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"title\": \"Titre\",\n    \"body\": \"Contenu de l'article\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/webapi/posts",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"posts"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "albums",
-			"item": [
-				{
-					"name": "get all albums",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/webapi/albums",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"webapi",
-								"albums"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create a new album",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/webapi/albums",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"webapi",
-								"albums"
 							]
 						}
 					},
@@ -154,13 +129,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/webapi/comments",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"comments"
 							]
 						}
@@ -172,15 +147,76 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postId\": 1,\n    \"name\": \"John DOE\",\n    \"email\": \"john@doe.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/webapi/comments",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "albums",
+			"item": [
+				{
+					"name": "get all albums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/esgi-webapi-2i1-2022/albums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"esgi-webapi-2i1-2022",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create a new album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"title\": \"Mon album\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/esgi-webapi-2i1-2022/albums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"esgi-webapi-2i1-2022",
+								"albums"
 							]
 						}
 					},
@@ -197,13 +233,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/webapi/photos",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/photos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"photos"
 							]
 						}
@@ -215,14 +251,23 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"albumId\": 1,\n    \"title\": \"Ma photo\",\n    \"url\": \"https://photo.com/photo.png\",\n    \"thumbnailUrl\": \"https://photo.com/photo-thumb.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/webapi/photos",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/photos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"photos"
 							]
 						}
@@ -240,13 +285,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/webapi/todos",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/todos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"todos"
 							]
 						}
@@ -258,14 +303,23 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"title\": \"Titre\",\n    \"completed\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost/webapi/todos",
+							"raw": "http://localhost/esgi-webapi-2i1-2022/todos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"webapi",
+								"esgi-webapi-2i1-2022",
 								"todos"
 							]
 						}
