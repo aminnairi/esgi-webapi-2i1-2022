@@ -1,6 +1,7 @@
 <?php
 
 include "./library/response.php";
+include "./library/header.php";
 include "./models/UserModel.php";
 
 final class User
@@ -15,10 +16,17 @@ final class User
 
         $headers = [
             "Content-Type" => "application/json",
-            "X-Amin" => "Hello"
         ];
 
         try {
+            $token = Header::get("token", "notfound");
+            $user = UserModel::findOneByToken($token);
+
+            if (!$user) {
+                echo Response::json(401, ["Content-Type" => "application/json"], ["success" => false, "error" => "Unauthorized"]);
+                die();
+            }
+
             $users = UserModel::getAll();
             $body = ["success" => true, "users" => $users];
             echo Response::json($statusCode, $headers, $body);

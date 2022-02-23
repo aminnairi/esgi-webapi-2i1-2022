@@ -32,4 +32,19 @@ class UserModel
             "password" => $password
         ]);
     }
+
+    public static function findOneByToken(string $token)
+    {
+        include "./database/database-connection.php";
+
+        $getUserQuery = $databaseConnection->prepare("SELECT * FROM users WHERE token = :token;");
+
+        $getUserQuery->execute([
+            "token" => $token
+        ]);
+
+        $user = $getUserQuery->fetch();
+
+        return $user;
+    }
 }

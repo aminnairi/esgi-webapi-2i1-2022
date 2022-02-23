@@ -9,7 +9,8 @@ CREATE TABLE users(
     email VARCHAR(50) NOT NULL,
     phone CHAR(10) NOT NULL,
     website varchar(50) NOT NULL,
-    password CHAR(60) NOT NULL
+    password CHAR(60) NOT NULL,
+    token CHAR(32)
 ) ENGINE = InnoDB;
 
 CREATE TABLE posts(
