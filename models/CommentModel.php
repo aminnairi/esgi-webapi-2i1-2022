@@ -9,4 +9,17 @@ class CommentModel
         $comments = $getCommentsQuery->fetchAll();
         return $comments;
     }
+
+    public static function create($commentToCreate)
+    {
+        include "./database/database-connection.php";
+
+        $createCommentQuery = $databaseConnection->prepare("INSERT INTO comments(postId, name, email) VALUES(:postId, :name, :email);");
+
+        $createCommentQuery->execute([
+            "postId" => $commentToCreate["postId"],
+            "name" => $commentToCreate["name"],
+            "email" => $commentToCreate["email"]
+        ]);
+    }
 }
