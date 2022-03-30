@@ -1,6 +1,6 @@
 <?php
 
-include "./library/response.php";
+include __DIR__ . "/../library/response.php";
 
 class Login
 {
