@@ -6,7 +6,7 @@ CREATE TABLE users(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(25) NOT NULL,
     username VARCHAR(25) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
     phone CHAR(10) NOT NULL,
     website varchar(50) NOT NULL,
     password CHAR(60) NOT NULL,

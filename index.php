@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 /**
  * @see https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op
  */
-$route = $_REQUEST["route"] ?? "home";
+$route = $_REQUEST["route"] ?? "";
 
 /**
  * @see https://www.php.net/manual/en/reserved.variables.server.php
@@ -14,7 +14,7 @@ $route = $_REQUEST["route"] ?? "home";
 $method = $_SERVER["REQUEST_METHOD"];
 
 if ($route === "login") {
-    include "./controllers/login.php";
+    include __DIR__ . "/controllers/login.php";
 
     if ($method === "POST") {
         Login::post();
@@ -23,7 +23,7 @@ if ($route === "login") {
 }
 
 if ($route === "users") {
-    include "./controllers/users.php";
+    include __DIR__ . "/controllers/users.php";
 
     if ($method === "GET") {
         User::get();
@@ -37,7 +37,7 @@ if ($route === "users") {
 }
 
 if ($route === "posts") {
-    include "./controllers/posts.php";
+    include __DIR__ . "/controllers/posts.php";
 
     if ($method === "GET") {
         Post::get();
@@ -51,7 +51,7 @@ if ($route === "posts") {
 }
 
 if ($route === "comments") {
-    include "./controllers/comments.php";
+    include __DIR__ . "/controllers/comments.php";
 
     if ($method === "GET") {
         Comment::get();
@@ -65,7 +65,7 @@ if ($route === "comments") {
 }
 
 if ($route === "todos") {
-    include "./controllers/todos.php";
+    include __DIR__ . "/controllers/todos.php";
 
     if ($method === "GET") {
         Todo::get();
@@ -79,7 +79,7 @@ if ($route === "todos") {
 }
 
 if ($route === "albums") {
-    include "./controllers/albums.php";
+    include __DIR__ . "/controllers/albums.php";
 
     if ($method === "GET") {
         Album::get();
@@ -93,7 +93,7 @@ if ($route === "albums") {
 }
 
 if ($route === "photos") {
-    include "./controllers/photos.php";
+    include __DIR__ . "/controllers/photos.php";
 
     if ($method === "GET") {
         Photo::get();
@@ -106,12 +106,10 @@ if ($route === "photos") {
     }
 }
 
-// Retourner le bon code de status
-// Retourner une réponse au format JSON
-echo "Introuvable";
+include __DIR__ . "/controllers/home.php";
+Home::all();
 
 // Modifier les chemins d'inclusions pour utiliser un chemin correct avec __DIR__
-
 
 // Toutes les routes (sauf login) doivent rendre l'authentification obligatoire
 // Toutes les routes (sauf login) il n'y ait que l'utilisateur ayant le role ADMINISTRATOR qui puisse envoyer des requêtes
@@ -119,3 +117,5 @@ echo "Introuvable";
 // Vous vérifiez que tous les paramètres soient corrects
 // Email -> vérifier qu'il existe, qu'il ait un bon format
 // Prénom -> vérifier qu'il existe, qu'il ait une taille similaire à ce qu'on a mis sur le fichier initialization.sql
+
+// Récupérer les erreurs PDO est les afficher avec une réponse json lorsque possible

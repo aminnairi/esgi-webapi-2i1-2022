@@ -1,15 +1,14 @@
 <?php
 
 include __DIR__ . "/../library/response.php";
+include __DIR__ . "/../database/database-connection.php";
 
 class Login
 {
     public static function post()
     {
-        include "./database/database-connection.php";
-
+        $databaseConnection = Database::getConnection();
         $json = json_decode(file_get_contents("php://input"));
-
         $getUserQuery = $databaseConnection->prepare("SELECT password FROM users WHERE email = :email;");
 
         $getUserQuery->execute([

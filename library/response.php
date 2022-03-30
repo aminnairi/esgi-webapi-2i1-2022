@@ -4,6 +4,8 @@ class Response
 {
     final public static function json(int $statusCode, array $headers, $body): string
     {
+        header("Content-Type: application/json");
+
         foreach ($headers as $headerName => $headerValue) {
             header("$headerName: $headerValue");
         }

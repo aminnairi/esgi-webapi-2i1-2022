@@ -1,10 +1,12 @@
 <?php
 
+include __DIR__ . "/../database/database-connection.php";
+
 class PostModel
 {
     public static function getAll()
     {
-        include "./database/database-connection.php";
+        $databaseConnection = Database::getConnection();
         $getPostsQuery = $databaseConnection->query("SELECT * FROM posts;");
         $posts = $getPostsQuery->fetchAll();
         return $posts;
@@ -12,8 +14,7 @@ class PostModel
 
     public static function create($postToCreate)
     {
-        include "./database/database-connection.php";
-
+        $databaseConnection = Database::getConnection();
         $userId = $postToCreate["userId"];
         $title = $postToCreate["title"];
         $body = $postToCreate["body"];

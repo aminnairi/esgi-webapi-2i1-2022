@@ -1,10 +1,12 @@
 <?php
 
+include __DIR__ . "/../database/database-connection.php";
+
 class CommentModel
 {
     public static function getAll()
     {
-        include "./database/database-connection.php";
+        $databaseConnection = Database::getConnection();
         $getCommentsQuery = $databaseConnection->query("SELECT * FROM comments;");
         $comments = $getCommentsQuery->fetchAll();
         return $comments;
@@ -12,8 +14,7 @@ class CommentModel
 
     public static function create($commentToCreate)
     {
-        include "./database/database-connection.php";
-
+        $databaseConnection = Database::getConnection();
         $createCommentQuery = $databaseConnection->prepare("INSERT INTO comments(postId, name, email) VALUES(:postId, :name, :email);");
 
         $createCommentQuery->execute([

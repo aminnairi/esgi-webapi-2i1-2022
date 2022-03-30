@@ -1,10 +1,12 @@
 <?php
 
+include __DIR__ . "/../database/database-connection.php";
+
 class UserModel
 {
     public static function getAll()
     {
-        include "./database/database-connection.php";
+        $databaseConnection = Database::getConnection();
         $getUsersQuery = $databaseConnection->query("SELECT * FROM users;");
         $users = $getUsersQuery->fetchAll();
 
@@ -13,7 +15,7 @@ class UserModel
 
     public static function create($userToCreate)
     {
-        include "./database/database-connection.php";
+        $databaseConnection = Database::getConnection();
         $name = $userToCreate["name"];
         $username = $userToCreate["username"];
         $email = $userToCreate["email"];
@@ -37,12 +39,25 @@ class UserModel
 
     public static function findOneByToken(string $token)
     {
-        include "./database/database-connection.php";
-
+        $databaseConnection = Database::getConnection();
         $getUserQuery = $databaseConnection->prepare("SELECT * FROM users WHERE token = :token;");
 
         $getUserQuery->execute([
             "token" => $token
+        ]);
+
+        $user = $getUserQuery->fetch();
+
+        return $user;
+    }
+
+    public static function findByEmail(string $email)
+    {
+        $databaseConnection = Database::getConnection();
+        $getUserQuery = $databaseConnection->prepare("SELECT * FROM users WHERE email = :email");
+
+        $getUserQuery->execute([
+            "email" => $email
         ]);
 
         $user = $getUserQuery->fetch();
