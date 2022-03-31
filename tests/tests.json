@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dc8cd083-6640-4381-8e32-5b6d69c6996e",
+		"_postman_id": "6b9e527c-d6d8-4a39-85da-515af4ac1c83",
 		"name": "esgi-webapi-2022-2i1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -23,7 +23,13 @@
 					],
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "8c81a0d2a578ee6ac36bfcd523282eee",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/esgi-webapi-2i1-2022/users",
 							"protocol": "http",
@@ -42,10 +48,16 @@
 					"name": "create user",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "bc33b23b22205d9d3c3ae1c70024c43f",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"anairi@esgi.fr\",\n    \"name\": \"Quentin HERMITEAU\",\n    \"username\": \"qhermiteau\",\n    \"website\": \"https://github.com/quentinhermiteau\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\"\n}",
+							"raw": "{\n    \"email\": \"anairi@esgi.fr\",\n    \"name\": \"\",\n    \"username\": \"qhermiteau\",\n    \"website\": \"https://github.com/quentinhermiteau\",\n    \"phone\": \"0102030405\",\n    \"password\": \"motdepasse\",\n    \"role\": \"USER\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,6 +333,39 @@
 							"path": [
 								"esgi-webapi-2i1-2022",
 								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login as user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"anairi@esgi.fr\",\n    \"password\": \"motdepasse\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/esgi-webapi-2i1-2022/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"esgi-webapi-2i1-2022",
+								"login"
 							]
 						}
 					},
